@@ -36,3 +36,15 @@ INSERT INTO Setor (nome, capacidade) VALUES
 ('Pista', 3000),
 ('Camarote', 500),
 ('Arquibancada', 1500);
+
+
+CREATE TABLE IF NOT EXISTS Ingresso (
+    id_ingresso INT AUTO_INCREMENT PRIMARY KEY,
+    id_evento INT NOT NULL,
+    id_setor INT NOT NULL,
+    nome_cliente varchar(100) NOT NULL,
+    data_venda DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (id_evento) REFERENCES Evento(id_evento),
+    FOREIGN KEY (id_setor) REFERENCES Setor(id_setor)
+);

@@ -5,6 +5,7 @@ use desafioprojetolegado\Controller\{
     UsuarioController,
     EventoController,
     SetorController,
+    IngressoController
 };
 
 
@@ -65,5 +66,21 @@ switch ($url) {
 
     case "/Desafio/desafioprojetolegado/setor/excluir":
         SetorController::excluir();
+        break;
+
+    case "/Desafio/desafioprojetolegado/ingresso/listar":
+        IngressoController::index();
+        break;
+
+    case "/Desafio/desafioprojetolegado/ingresso/form":
+        IngressoController::form();
+        break;
+
+    case "/Desafio/desafioprojetolegado/ingresso/salvar":
+        IngressoController::salvar();
+        break;
+
+    case "/Desafio/desafioprojetolegado/ingresso/excluir":
+        IngressoController::excluir();
         break;
 }

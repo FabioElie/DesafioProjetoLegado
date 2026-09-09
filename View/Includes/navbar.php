@@ -41,6 +41,9 @@
         <li class="nav-item">
           <a class="nav-link" href="<?= APP_URL ?>/setor/listar">Setores</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?= APP_URL ?>/ingresso/listar">Ingressos</a>
+        </li>
       </ul>
     </div>
   </div>
