@@ -12,7 +12,7 @@ include VIEW . '/Includes/header.php';
 
             <section class="lado-dir">
                 <div class="login-box">
-                    <form method="POST" action="login">
+                    <form method="POST" action="logar">
                         <label for="email">E-mail</label>
 
                         <input

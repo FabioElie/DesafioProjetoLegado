@@ -38,4 +38,13 @@ class UsuarioController
             include VIEW . '/Usuario/cadastrar_usuario.php';
         }
     }
+
+    public static function excluir()
+    {
+        if (!empty($_GET['id_usuario'])) {
+            Usuario::excluir($_GET['id_usuario']);
+        }
+
+        header("Location: /Desafio/desafioprojetolegado/usuario/listar");
+    }
 }

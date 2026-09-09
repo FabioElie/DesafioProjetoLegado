@@ -33,7 +33,7 @@ include VIEW . '/Includes/navbar.php';
                 <td>' . $usuario->email . '</td>
                 <td>' . $usuario->perfil . '</td>
 
-                <td><a href="/desafioprojetolegado/usuario/cadastrar?id_usuario=' . $usuario->id_usuario . '" class="btn btn-dark btn-sm"><i class="bi bi-pencil-square"></i></a><a href="/desafioprojetolegado/usuario/excluir/' . $usuario->id_usuario . '" class="btn btn-danger btn-sm ms-1"><i class="bi bi-trash"></i></a></td> </tr>';
+                <td><a href="/Desafio/desafioprojetolegado/usuario/cadastrar?id_usuario=' . $usuario->id_usuario . '" class="btn btn-dark btn-sm"><i class="bi bi-pencil-square"></i></a><a href="/Desafio/desafioprojetolegado/usuario/excluir?id_usuario=' . $usuario->id_usuario . '" class="btn btn-danger btn-sm ms-1" onclick="return confirm(\'Deseja realmente excluir este usuário?\');"><i class="bi bi-trash"></i></a></td> </tr>';
         endforeach; ?>
     </tbody>
 </table>

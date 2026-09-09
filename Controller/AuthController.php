@@ -7,9 +7,6 @@ use desafioprojetolegado\DAO\UsuarioDAO;
 
 class AuthController
 {
-    private UsuarioDAO $auth;
-
-
     public static function index()
     {
         include VIEW . '/Login/login.php';
@@ -19,18 +16,18 @@ class AuthController
     {
         $email = trim($_POST['email'] ?? '');
         $senha = $_POST['senha'] ?? '';
-        $resultado = $this->autenticar($email, $senha);
+        $resultado = self::autenticar($email, $senha);
 
         if (!$resultado['sucesso']) {
-            include VIEW . '/Usuario/cadastrar_usuarios.php';
+            header('Location: /Desafio/desafioprojetolegado/login');
         } else {
-            include VIEW . '/Usuario/listar_usuarios.php';
+            header('Location: /Desafio/desafioprojetolegado/usuario/listar');
         }
     }
 
 
 
-    private function autenticar(string $email, string $senha): array
+    private static function autenticar(string $email, string $senha): array
     {
         if ($email === '' || $senha === '') {
             return [
@@ -46,9 +43,9 @@ class AuthController
             ];
         }
 
-        $usuario = $this->auth->buscarPorEmail($email);
+        $usuario = UsuarioDAO::buscarPorEmail($email);
 
-        if (!$usuario || !password_verify($senha, $usuario['senha'])) {
+        if (!$usuario || $senha !== $usuario['senha']) {
             return [
                 'sucesso' => false,
                 'erro' => 'E-mail ou senha inválidos.'

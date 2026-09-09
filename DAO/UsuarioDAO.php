@@ -3,6 +3,7 @@
 namespace desafioprojetolegado\DAO;
 
 use desafioprojetolegado\Model\Usuario;
+use PDO;
 
 class UsuarioDAO extends DAO
 {
@@ -55,6 +56,7 @@ class UsuarioDAO extends DAO
         $stmt->bindValue(3, $model->senha);
         $stmt->bindValue(4, $model->email);
         $stmt->bindValue(5, $model->perfil);
+        $stmt->bindValue(6, $model->id_usuario);
         $stmt->execute();
 
         return $model;
@@ -65,7 +67,14 @@ class UsuarioDAO extends DAO
         return ($model->id_usuario == null) ? self::insert($model) : self::update($model);
     }
 
-    public function buscarPorEmail(string $email): array|false
+    public static function delete($id)
+    {
+        $sql = "DELETE FROM usuario WHERE id_usuario = ?";
+        $stmt = parent::getConnection()->prepare($sql);
+        return $stmt->execute([$id]);
+    }
+
+    public static function buscarPorEmail(string $email): array|false
     {
         $sql = "SELECT id_usuario, nome, senha, perfil FROM usuario WHERE email = ? LIMIT 1";
         $stmt = parent::getConnection()->prepare($sql);

@@ -36,4 +36,9 @@ class Usuario
         return UsuarioDAO::update($this);
     }
 
+    public static function excluir($id)
+    {
+        return UsuarioDAO::delete($id);
+    }
+
 }
